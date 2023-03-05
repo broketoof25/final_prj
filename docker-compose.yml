@@ -2,7 +2,7 @@ version: "3.8"
 services:
   web:
     build: ./app
-    image: 981960797902.dkr.ecr.us-west-2.amazonaws.com/final_prj:django_docker_aws_web
+    image: 981960797902.dkr.ecr.us-east-1.amazonaws.com/final_prj:final_prj_web
     command: gunicorn dvd_project.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - ./app/:/usr/src/app/
@@ -13,14 +13,14 @@ services:
       - DB_NAME=dvdrental_db
       - DB_USER=postgres
       - DB_PASSWORD=admin123
-      - DB_HOST=dvdrental-db.cofc1d0bmubt.us-west-2.rds.amazonaws.com
+      - DB_HOST=dvdrental.corjevpvhgko.us-east-1.rds.amazonaws.com
       - DB_PORT=5432
       - DATABASE=postgres
-      - VIRTUAL_HOST=ec2-52-43-145-37.us-west-2.compute.amazonaws.com
+      - VIRTUAL_HOST=ec2-44-212-136-160.compute-1.amazonaws.com
       - VIRTUAL_PORT=8000
   nginx:
     build: ./nginx
-    image: 981960797902.dkr.ecr.us-west-2.amazonaws.com/final_prj:django_docker_aws_nginx
+    image: 981960797902.dkr.ecr.us-east-1.amazonaws.com/final_prj:final_prj_nginx
     volumes:
       - static_volume:/usr/src/app/static
     ports:
